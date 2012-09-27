@@ -5,7 +5,7 @@ namespace Jfsimon\Icalendar\Domain\Model;
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class AbstractObject
+class AbstractObject implements ObjectInterface
 {
     /**
      * @var string
@@ -21,7 +21,7 @@ class AbstractObject
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {

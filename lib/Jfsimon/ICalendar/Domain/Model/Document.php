@@ -3,6 +3,7 @@
 namespace Jfsimon\Icalendar\Domain\Model;
 
 use Jfsimon\Icalendar\Domain\Collection\ComponentCollection;
+use Jfsimon\ICalendar\Exception\InvalidChildException;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -15,7 +16,7 @@ class Document
     private $components;
 
     /**
-     * @param Component $component
+     * {@inheritdoc}
      */
     public function add($child)
     {
@@ -23,7 +24,7 @@ class Document
             $this->components[] = $child;
         }
 
-        throw new \InvalidArgumentException();
+        throw new InvalidChildException('Component', $child);
     }
 
     /**

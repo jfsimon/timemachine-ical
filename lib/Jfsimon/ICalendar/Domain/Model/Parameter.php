@@ -2,6 +2,8 @@
 
 namespace Jfsimon\Icalendar\Domain\Model;
 
+use Jfsimon\ICalendar\Exception\InvalidChildException;
+
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
@@ -22,9 +24,7 @@ class Parameter extends AbstractObject
     }
 
     /**
-     * @param mixed $child
-     *
-     * @throws \InvalidArgumentException
+     * {@inheritdoc}
      */
     public function add($child)
     {
@@ -32,7 +32,7 @@ class Parameter extends AbstractObject
             $this->value .= $child;
         }
 
-        throw new \InvalidArgumentException();
+        throw new \InvalidArgumentException('string', $child);
     }
 
     /**
