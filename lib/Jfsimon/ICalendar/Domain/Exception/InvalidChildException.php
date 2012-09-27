@@ -1,6 +1,6 @@
 <?php
 
-namespace Jfsimon\ICalendar\Exception;
+namespace Jfsimon\ICalendar\Domain\Exception;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>

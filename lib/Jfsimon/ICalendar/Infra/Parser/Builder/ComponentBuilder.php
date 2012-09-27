@@ -3,8 +3,8 @@
 namespace Jfsimon\ICalendar\Infra\Parser\Builder;
 
 use Jfsimon\ICalendar\Infra\Parser\Token;
-use Jfsimon\Icalendar\Domain\Model\Component;
-use Jfsimon\Icalendar\Domain\Model\Property;
+use Jfsimon\ICalendar\Domain\Model\Component;
+use Jfsimon\ICalendar\Domain\Model\Property;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>

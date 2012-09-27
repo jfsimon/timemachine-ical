@@ -1,9 +1,9 @@
 <?php
 
-namespace Jfsimon\Icalendar\Domain\Model;
+namespace Jfsimon\ICalendar\Domain\Model;
 
-use Jfsimon\Icalendar\Domain\Collection\ComponentCollection;
-use Jfsimon\ICalendar\Exception\InvalidChildException;
+use Jfsimon\ICalendar\Domain\Collection\ComponentCollection;
+use Jfsimon\ICalendar\Domain\Exception\InvalidChildException;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -16,12 +16,22 @@ class Document
     private $components;
 
     /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->components = new ComponentCollection();
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function add($child)
     {
         if ($child instanceof Component) {
-            $this->components[] = $child;
+            $this->components->add($child);
+
+            return;
         }
 
         throw new InvalidChildException('Component', $child);

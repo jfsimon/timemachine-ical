@@ -1,11 +1,13 @@
 <?php
 
-namespace Jfsimon\Icalendar\Domain\Collection;
+namespace Jfsimon\ICalendar\Domain\Collection;
+
+use Jfsimon\ICalendar\Domain\Exception\EmptyCollectionException;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-abstract class AbstractCollection implements \IteratorAggregate
+abstract class AbstractCollection implements \IteratorAggregate, \Countable
 {
     /**
      * @var array
@@ -13,7 +15,7 @@ abstract class AbstractCollection implements \IteratorAggregate
     protected $children;
 
     /**
-     * @param array $children
+     * Constructor.
      */
     public function __construct()
     {
@@ -26,6 +28,14 @@ abstract class AbstractCollection implements \IteratorAggregate
     public function getIterator()
     {
         return new \ArrayIterator($this->children);
+    }
+
+    /**
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->children);
     }
 
     /**
@@ -43,5 +53,17 @@ abstract class AbstractCollection implements \IteratorAggregate
         }
 
         return new \ArrayIterator($children);
+    }
+
+    /**
+     * @return \Jfsimon\ICalendar\Domain\Model\ObjectInterface
+     */
+    public function first()
+    {
+        if (0 === count($this->children)) {
+            throw new EmptyCollectionException();
+        }
+
+        return $this->children[0];
     }
 }

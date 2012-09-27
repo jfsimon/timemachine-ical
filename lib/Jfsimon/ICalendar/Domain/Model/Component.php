@@ -1,11 +1,11 @@
 <?php
 
-namespace Jfsimon\Icalendar\Domain\Model;
+namespace Jfsimon\ICalendar\Domain\Model;
 
-use Jfsimon\Icalendar\Domain\Collection\ComponentCollection;
-use Jfsimon\Icalendar\Domain\Collection\PropertyCollection;
-use Jfsimon\Icalendar\Domain\Collection\ParameterCollection;
-use Jfsimon\ICalendar\Exception\InvalidChildException;
+use Jfsimon\ICalendar\Domain\Collection\ComponentCollection;
+use Jfsimon\ICalendar\Domain\Collection\PropertyCollection;
+use Jfsimon\ICalendar\Domain\Collection\ParameterCollection;
+use Jfsimon\ICalendar\Domain\Exception\InvalidChildException;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -23,11 +23,6 @@ class Component extends AbstractObject
     private $properties;
 
     /**
-     * @var ParameterCollection
-     */
-    private $parameters;
-
-    /**
      * @param string $name
      */
     public function __construct($name)
@@ -35,7 +30,6 @@ class Component extends AbstractObject
         parent::__construct($name);
         $this->components = new ComponentCollection();
         $this->properties = new PropertyCollection();
-        $this->parameters = new ParameterCollection();
     }
 
     /**
@@ -46,15 +40,13 @@ class Component extends AbstractObject
         switch (true) {
             case $child instanceof Component:
                 $this->components->add($child);
-                break;
+
+                return;
 
             case $child instanceof Property:
                 $this->properties->add($child);
-                break;
 
-            case $child instanceof Parameter:
-                $this->parameters->add($child);
-                break;
+                return;
 
             case is_array($child) || $child instanceof \Traversable:
                 foreach ($child as $subChild) {
@@ -73,14 +65,6 @@ class Component extends AbstractObject
     public function getComponents()
     {
         return $this->components;
-    }
-
-    /**
-     * @return ParameterCollection
-     */
-    public function getParameters()
-    {
-        return $this->parameters;
     }
 
     /**

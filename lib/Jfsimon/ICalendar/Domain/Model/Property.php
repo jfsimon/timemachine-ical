@@ -1,9 +1,9 @@
 <?php
 
-namespace Jfsimon\Icalendar\Domain\Model;
+namespace Jfsimon\ICalendar\Domain\Model;
 
-use Jfsimon\Icalendar\Domain\Collection\ParameterCollection;
-use Jfsimon\ICalendar\Exception\InvalidChildException;
+use Jfsimon\ICalendar\Domain\Collection\ParameterCollection;
+use Jfsimon\ICalendar\Domain\Exception\InvalidChildException;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -37,10 +37,14 @@ class Property extends AbstractObject
     {
         if ($child instanceof Parameter) {
             $this->parameters->add($child);
+
+            return;
         }
 
         if (is_string($child)) {
             $this->value .= $child;
+
+            return;
         }
 
         throw new InvalidChildException('Parameter or string', $child);

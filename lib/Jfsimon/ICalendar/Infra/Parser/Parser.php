@@ -2,10 +2,10 @@
 
 namespace Jfsimon\ICalendar\Infra\Parser;
 
-use Jfsimon\Icalendar\Domain\Service\ParserInterface;
+use Jfsimon\ICalendar\Domain\Service\ParserInterface;
 use Jfsimon\ICalendar\Infra\Parser\Tokenizer\TokenizerInterface;
 use Jfsimon\ICalendar\Infra\Parser\Builder\DocumentBuilder;
-use Jfsimon\Icalendar\Domain\Model\Document;
+use Jfsimon\ICalendar\Domain\Model\Document;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>

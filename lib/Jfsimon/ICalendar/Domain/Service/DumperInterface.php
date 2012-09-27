@@ -1,8 +1,8 @@
 <?php
 
-namespace Jfsimon\Icalendar\Domain\Service;
+namespace Jfsimon\ICalendar\Domain\Service;
 
-use Jfsimon\Icalendar\Domain\Model\Document;
+use Jfsimon\ICalendar\Domain\Model\Document;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>

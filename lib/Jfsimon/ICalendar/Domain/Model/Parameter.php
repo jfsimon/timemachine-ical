@@ -1,8 +1,8 @@
 <?php
 
-namespace Jfsimon\Icalendar\Domain\Model;
+namespace Jfsimon\ICalendar\Domain\Model;
 
-use Jfsimon\ICalendar\Exception\InvalidChildException;
+use Jfsimon\ICalendar\Domain\Exception\InvalidChildException;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -30,9 +30,11 @@ class Parameter extends AbstractObject
     {
         if (is_string($child)) {
             $this->value .= $child;
+
+            return;
         }
 
-        throw new \InvalidArgumentException('string', $child);
+        throw new InvalidChildException('string', $child);
     }
 
     /**

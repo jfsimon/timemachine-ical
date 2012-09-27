@@ -1,11 +1,11 @@
 <?php
 
-namespace Jfsimon\Icalendar\Domain\Model;
+namespace Jfsimon\ICalendar\Domain\Model;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class AbstractObject implements ObjectInterface
+abstract class AbstractObject implements ObjectInterface
 {
     /**
      * @var string

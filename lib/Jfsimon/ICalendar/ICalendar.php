@@ -1,6 +1,6 @@
 <?php
 
-namespace Jfsimon\Icalendar;
+namespace Jfsimon\ICalendar;
 
 use Jfsimon\ICalendar\Parser\Parser;
 use Jfsimon\ICalendar\Parser\Tokenizer\RFC2445Tokenizer;

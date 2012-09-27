@@ -1,6 +1,6 @@
 <?php
 
-namespace Jfsimon\Icalendar\Domain\Model;
+namespace Jfsimon\ICalendar\Domain\Model;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -12,7 +12,7 @@ interface ObjectInterface
      *
      * @param mixed $child
      *
-     * @throws \Jfsimon\ICalendar\Exception\InvalidChildException
+     * @throws \Jfsimon\ICalendar\Domain\Exception\InvalidChildException
      */
     function add($child);
 
