@@ -1,10 +1,10 @@
 <?php
 
-namespace Jfsimon\ICalendar\Parser\Builder;
+namespace Jfsimon\ICalendar\Infra\Parser\Builder;
 
-use Jfsimon\ICalendar\Parser\Token;
-use Jfsimon\Icalendar\Model\Component;
-use Jfsimon\Icalendar\Model\Document;
+use Jfsimon\ICalendar\Infra\Parser\Token;
+use Jfsimon\Icalendar\Domain\Model\Document;
+use Jfsimon\Icalendar\Domain\Model\Component;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>

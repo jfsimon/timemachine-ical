@@ -1,13 +1,13 @@
 <?php
 
-namespace Jfsimon\Icalendar\Model\Bag;
+namespace Jfsimon\Icalendar\Domain\Collection;
 
-use Jfsimon\Icalendar\Model\Parameter;
+use Jfsimon\Icalendar\Domain\Model\Parameter;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class ParameterBag extends AbstractBag
+class ParameterCollection extends AbstractCollection
 {
     /**
      * @param Parameter $parameter

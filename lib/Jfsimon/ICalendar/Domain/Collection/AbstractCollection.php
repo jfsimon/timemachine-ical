@@ -1,11 +1,11 @@
 <?php
 
-namespace Jfsimon\Icalendar\Model\Bag;
+namespace Jfsimon\Icalendar\Domain\Collection;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-abstract class AbstractBag implements \IteratorAggregate
+abstract class AbstractCollection implements \IteratorAggregate
 {
     /**
      * @var array

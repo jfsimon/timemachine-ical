@@ -1,6 +1,6 @@
 <?php
 
-namespace Jfsimon\Icalendar\Model;
+namespace Jfsimon\Icalendar\Domain\Model;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>

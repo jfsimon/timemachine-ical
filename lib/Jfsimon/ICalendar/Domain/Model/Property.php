@@ -1,8 +1,8 @@
 <?php
 
-namespace Jfsimon\Icalendar\Model;
+namespace Jfsimon\Icalendar\Domain\Model;
 
-use Jfsimon\Icalendar\Model\Bag\ParameterBag;
+use Jfsimon\Icalendar\Domain\Collection\ParameterCollection;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -15,18 +15,17 @@ class Property extends AbstractObject
     private $value;
 
     /**
-     * @var ParameterBag
+     * @var ParameterCollection
      */
     private $parameters;
 
     /**
      * @param string $name
-     * @param string $value
      */
     public function __construct($name)
     {
         parent::__construct($name);
-        $this->parameters = new ParameterBag();
+        $this->parameters = new ParameterCollection();
         $this->value = '';
     }
 
@@ -57,7 +56,7 @@ class Property extends AbstractObject
     }
 
     /**
-     * @return ParameterBag
+     * @return ParameterCollection
      */
     public function getParameters()
     {

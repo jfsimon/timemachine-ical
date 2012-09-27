@@ -1,8 +1,8 @@
 <?php
 
-namespace Jfsimon\ICalendar\Parser\Builder;
+namespace Jfsimon\ICalendar\Infra\Parser\Builder;
 
-use Jfsimon\ICalendar\Parser\Token;
+use Jfsimon\ICalendar\Infra\Parser\Token;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>

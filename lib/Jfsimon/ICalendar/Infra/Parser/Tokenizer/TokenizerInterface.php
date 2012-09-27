@@ -1,11 +1,11 @@
 <?php
 
-namespace Jfsimon\ICalendar\Parser\Lexer;
+namespace Jfsimon\ICalendar\Infra\Parser\Tokenizer;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-interface LexerInterface
+interface TokenizerInterface
 {
     /**
      * @param string $content

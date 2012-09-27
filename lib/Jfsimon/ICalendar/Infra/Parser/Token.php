@@ -1,6 +1,6 @@
 <?php
 
-namespace Jfsimon\ICalendar\Parser;
+namespace Jfsimon\ICalendar\Infra\Parser;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>

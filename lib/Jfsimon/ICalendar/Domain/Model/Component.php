@@ -1,10 +1,10 @@
 <?php
 
-namespace Jfsimon\Icalendar\Model;
+namespace Jfsimon\Icalendar\Domain\Model;
 
-use Jfsimon\Icalendar\Model\Bag\ComponentBag;
-use Jfsimon\Icalendar\Model\Bag\PropertyBag;
-use Jfsimon\Icalendar\Model\Bag\ParameterBag;
+use Jfsimon\Icalendar\Domain\Collection\ComponentCollection;
+use Jfsimon\Icalendar\Domain\Collection\PropertyCollection;
+use Jfsimon\Icalendar\Domain\Collection\ParameterCollection;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -12,17 +12,17 @@ use Jfsimon\Icalendar\Model\Bag\ParameterBag;
 class Component extends AbstractObject
 {
     /**
-     * @var ComponentBag
+     * @var ComponentCollection
      */
     private $components;
 
     /**
-     * @var PropertyBag
+     * @var PropertyCollection
      */
     private $properties;
 
     /**
-     * @var ParameterBag
+     * @var ParameterCollection
      */
     private $parameters;
 
@@ -32,9 +32,9 @@ class Component extends AbstractObject
     public function __construct($name)
     {
         parent::__construct($name);
-        $this->components = new ComponentBag();
-        $this->properties = new PropertyBag();
-        $this->parameters = new ParameterBag();
+        $this->components = new ComponentCollection();
+        $this->properties = new PropertyCollection();
+        $this->parameters = new ParameterCollection();
     }
 
     /**
@@ -69,7 +69,7 @@ class Component extends AbstractObject
     }
 
     /**
-     * @return ComponentBag
+     * @return ComponentCollection
      */
     public function getComponents()
     {
@@ -77,7 +77,7 @@ class Component extends AbstractObject
     }
 
     /**
-     * @return ParameterBag
+     * @return ParameterCollection
      */
     public function getParameters()
     {
@@ -85,7 +85,7 @@ class Component extends AbstractObject
     }
 
     /**
-     * @return PropertyBag
+     * @return PropertyCollection
      */
     public function getProperties()
     {

@@ -1,13 +1,13 @@
 <?php
 
-namespace Jfsimon\ICalendar\Parser\Lexer;
+namespace Jfsimon\ICalendar\Infra\Parser\Tokenizer;
 
-use Jfsimon\ICalendar\Parser\Token;
+use Jfsimon\ICalendar\Infra\Parser\Token;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class ValueLexer implements LexerInterface
+class ValueTokenizer implements TokenizerInterface
 {
     /**
      * {@inheritdoc}
