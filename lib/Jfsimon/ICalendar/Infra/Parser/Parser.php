@@ -2,6 +2,7 @@
 
 namespace Jfsimon\ICalendar\Infra\Parser;
 
+use Jfsimon\Icalendar\Domain\Service\ParserInterface;
 use Jfsimon\ICalendar\Infra\Parser\Tokenizer\TokenizerInterface;
 use Jfsimon\ICalendar\Infra\Parser\Builder\DocumentBuilder;
 use Jfsimon\Icalendar\Domain\Model\Document;
@@ -9,7 +10,7 @@ use Jfsimon\Icalendar\Domain\Model\Document;
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
-class Parser
+class Parser implements ParserInterface
 {
     /**
      * @var TokenizerInterface
@@ -32,16 +33,14 @@ class Parser
     }
 
     /**
-     * @param string $content
-     *
-     * @return Document
+     * {@inheritdoc}
      */
     public function parse($content)
     {
         $content = preg_replace('/(\\r|\\r\\n|\\n\\r/', "\n", $content);
 
         foreach (explode("\n", $content) as $row) {
-            foreach ($this->lexer->buildTokens($row) as $token) {
+            foreach ($this->tokenizer->buildTokens($row) as $token) {
                 $this->builder = $this->builder->add($token);
             }
         }

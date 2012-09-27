@@ -17,9 +17,13 @@ class Document
     /**
      * @param Component $component
      */
-    public function add(Component $component)
+    public function add($child)
     {
-        $this->components[] = $component;
+        if ($child instanceof Component) {
+            $this->components[] = $child;
+        }
+
+        throw new \InvalidArgumentException();
     }
 
     /**

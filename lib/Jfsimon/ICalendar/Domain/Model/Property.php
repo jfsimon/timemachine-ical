@@ -34,7 +34,7 @@ class Property extends AbstractObject
      *
      * @throws \InvalidArgumentException
      */
-    public function add(Parameter $child)
+    public function add($child)
     {
         if ($child instanceof Parameter) {
             $this->parameters->add($child);

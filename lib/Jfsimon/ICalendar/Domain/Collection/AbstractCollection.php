@@ -15,12 +15,9 @@ abstract class AbstractCollection implements \IteratorAggregate
     /**
      * @param array $children
      */
-    public function __construct(array $children = array())
+    public function __construct()
     {
         $this->children = array();
-        foreach ($children as $child) {
-            $this->add($child);
-        }
     }
 
     /**
