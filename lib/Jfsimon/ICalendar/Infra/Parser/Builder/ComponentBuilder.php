@@ -46,6 +46,8 @@ class ComponentBuilder implements BuilderInterface
             return $builder;
         }
 
+        var_dump($this, $token); die;
+
         // parameter or value token
         throw new \InvalidArgumentException();
     }

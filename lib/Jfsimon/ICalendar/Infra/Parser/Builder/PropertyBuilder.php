@@ -26,6 +26,8 @@ class PropertyBuilder implements BuilderInterface
     {
         if ($token->is(Token::VALUE)) {
             $this->property->add($token->getValue());
+
+            return $this;
         }
 
         if ($token->is(Token::PARAMETER)) {
