@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Jfsimon": ["./lib", "./tests"]
+            "TimeMachine": ["./lib", "./tests"]
         }
     }
 }

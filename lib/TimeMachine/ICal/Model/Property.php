@@ -56,7 +56,7 @@ class Property extends NamedObject
      */
     public function getChildren()
     {
-        return array_merge($this->parameters);
+        return iterator_to_array($this->parameters);
     }
 
     /**

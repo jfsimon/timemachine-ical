@@ -8,6 +8,19 @@ namespace TimeMachine\ICal\Dumper\Formatter;
 class RFC2445Formatter implements FormatterInterface
 {
     /**
+     * @var string
+     */
+    private $feed;
+
+    /**
+     * @param string $feed
+     */
+    public function __construct($feed = "\n\r")
+    {
+        $this->feed = $feed;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function begin($name)
@@ -28,7 +41,7 @@ class RFC2445Formatter implements FormatterInterface
      */
     public function property($name, $value, array $parameters = array())
     {
-        return $name.':'.$value.implode('', $parameters);
+        return $name.((count($parameters) > 0 || $value) ? ':' : '').$value.implode('', $parameters);
     }
 
     /**
@@ -49,6 +62,6 @@ class RFC2445Formatter implements FormatterInterface
 
     public function feed()
     {
-        return "\n\n";
+        return $this->feed;
     }
 }
