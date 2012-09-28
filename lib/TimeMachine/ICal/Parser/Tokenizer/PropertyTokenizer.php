@@ -13,12 +13,12 @@ class PropertyTokenizer implements TokenizerInterface
     /**
      * @var string
      */
-    private $separator;
+    private $valueSeparator;
 
     /**
      * @var string
      */
-    private $valueSeparator;
+    private $parametersSeparator;
 
     /**
      * @var TokenizerInterface
@@ -26,15 +26,22 @@ class PropertyTokenizer implements TokenizerInterface
     private $valueTokenizer;
 
     /**
-     * @param string             $separator
-     * @param string             $valueSeparator
-     * @param TokenizerInterface $valueTokenizer
+     * @var TokenizerInterface
      */
-    public function __construct($separator, $valueSeparator, TokenizerInterface $valueTokenizer)
+    private $parameterTokenizer;
+
+    /**
+     * @param string             $valueSeparator
+     * @param string             $parametersSeparator
+     * @param TokenizerInterface $valueTokenizer
+     * @param TokenizerInterface $parameterTokenizer
+     */
+    public function __construct($valueSeparator, $parametersSeparator, TokenizerInterface $valueTokenizer, TokenizerInterface $parameterTokenizer)
     {
-        $this->separator = $separator;
         $this->valueSeparator = $valueSeparator;
+        $this->parametersSeparator = $parametersSeparator;
         $this->valueTokenizer = $valueTokenizer;
+        $this->parameterTokenizer= $parameterTokenizer;
 
         if (null === $this->valueTokenizer = $valueTokenizer) {
             $this->valueTokenizer = new TokenizerChain();
@@ -48,14 +55,23 @@ class PropertyTokenizer implements TokenizerInterface
      */
     public function buildTokens($content)
     {
-        if (preg_match('/^([a-z-_]+)'.$this->separator.'(.*)$/i', $content, $matches)) {
+        $pattern = sprintf('/^([a-z-_]+)(?:%s([^%s]*))?(?:%s(.*))?$/i', $this->valueSeparator, $this->parametersSeparator, $this->parametersSeparator);
+        if (preg_match($pattern, $content, $matches)) {
             $tokens = array(new Token(Token::PROPERTY, $matches[1]));
 
-            foreach (explode($this->valueSeparator, $matches[2]) as $value) {
-                $tokens = array_merge($tokens, $this->valueTokenizer->buildTokens($value));
+            if (isset($matches[2]) && '' !== $matches[2]) {
+                $tokens = array_merge($tokens, $this->valueTokenizer->buildTokens($matches[2]));
             }
+
+            if (isset($matches[3])) {
+                foreach (explode($this->parametersSeparator, $matches[3]) as $value) {
+                    $tokens = array_merge($tokens, $this->parameterTokenizer->buildTokens($value));
+                }
+            }
+
+            return $tokens;
         }
 
-        throw TokenizerException::unsupportedContent($content);
+        throw TokenizerException::unsupportedContent($this, $content);
     }
 }

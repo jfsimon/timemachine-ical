@@ -22,12 +22,13 @@ class Property extends NamedObject
 
     /**
      * @param string $name
+     * @param string $value
      */
-    public function __construct($name)
+    public function __construct($name, $value = '')
     {
         parent::__construct($name);
         $this->parameters = new ParameterCollection();
-        $this->value = '';
+        $this->value = $value;
     }
 
     /**

@@ -11,7 +11,7 @@ use TimeMachine\ICal\Parser\Token;
  */
 class ParameterTokenizerTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSuccessWithValue()
+    public function testWithValue()
     {
         $tokenizer = new ParameterTokenizer('=', new ValueTokenizer());
         $content = 'DELEGATED-FROM=bar@example.com:mailto:foo@example.com';
@@ -19,7 +19,7 @@ class ParameterTokenizerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($tokens, $tokenizer->buildTokens($content));
     }
 
-    public function testSuccessWithoutValue()
+    public function testWithoutValue()
     {
         $tokenizer = new ParameterTokenizer('=', new ValueTokenizer());
         $content = 'PARTSTAT=';
@@ -27,7 +27,7 @@ class ParameterTokenizerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($tokens, $tokenizer->buildTokens($content));
     }
 
-    public function testErrorWithoutName()
+    public function testWithoutName()
     {
         $tokenizer = new ParameterTokenizer('=', new ValueTokenizer());
         $content = '=REQ-PARTICIPANT';
@@ -35,7 +35,7 @@ class ParameterTokenizerTest extends \PHPUnit_Framework_TestCase
         $tokenizer->buildTokens($content);
     }
 
-    public function testSkipEmpty()
+    public function testEmpty()
     {
         $tokenizer = new ParameterTokenizer('=', new ValueTokenizer());
         $content = '';

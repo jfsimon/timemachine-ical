@@ -2,6 +2,8 @@
 
 namespace TimeMachine\ICal\Exception;
 
+use TimeMachine\ICal\Parser\Tokenizer\TokenizerInterface;
+
 /**
  * Tokenizer exception.
  *
@@ -12,12 +14,13 @@ class TokenizerException extends \InvalidArgumentException
     /**
      * Tried to tokenize unsupported content.
      *
-     * @param string $content
+     * @param \TimeMachine\ICal\Parser\Tokenizer\TokenizerInterface $tokenizer
+     * @param string                                                $content
      *
      * @return TokenizerException
      */
-    public static function unsupportedContent($content)
+    public static function unsupportedContent(TokenizerInterface $tokenizer, $content)
     {
-        return new self('Could not tokenize content: "'.$content.'".');
+        return new self('Could not tokenize content: "'.$content.'" with "'.get_class($tokenizer).'".');
     }
 }

@@ -23,6 +23,8 @@ class ParameterBuilder implements BuilderInterface
     {
         if ($token->is(Token::VALUE)) {
             $this->parameter->add($token->getValue());
+
+            return $this->parent;
         }
 
         return $this->parent->add($token);

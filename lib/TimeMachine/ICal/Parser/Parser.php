@@ -37,7 +37,7 @@ class Parser implements ParserInterface
      */
     public function parse($content)
     {
-        $content = preg_replace('/(\\r|\\r\\n|\\n\\r/', "\n", $content);
+        $content = preg_replace('/(\\r|\\r\\n|\\n\\r)/', "\n", $content);
 
         foreach (explode("\n", $content) as $row) {
             foreach ($this->tokenizer->buildTokens($row) as $token) {

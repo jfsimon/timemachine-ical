@@ -24,7 +24,7 @@ class DocumentBuilder implements BuilderInterface
     {
         if ($token->is(Token::BEGIN)) {
             $builder = new ComponentBuilder($this, new Component($token->getValue()));
-            $this->document->add($builder);
+            $this->children[] = $builder;
 
             return $builder;
         }
@@ -34,6 +34,10 @@ class DocumentBuilder implements BuilderInterface
 
     public function build()
     {
+        foreach ($this->children as $child) {
+            $this->document->add($child->build());
+        }
+
         return $this->document;
     }
 }

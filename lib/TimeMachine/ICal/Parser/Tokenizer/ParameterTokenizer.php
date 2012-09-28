@@ -47,6 +47,6 @@ class ParameterTokenizer implements TokenizerInterface
             );
         }
 
-        throw TokenizerException::unsupportedContent($content);
+        throw TokenizerException::unsupportedContent($this, $content);
     }
 }

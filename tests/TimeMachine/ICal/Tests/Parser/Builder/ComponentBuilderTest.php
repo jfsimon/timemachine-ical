@@ -9,7 +9,7 @@ use TimeMachine\ICal\Parser\Token;
 
 abstract class ComponentBuilderTest extends AbstractBuilderTest
 {
-    public function test1()
+    public function testWithComponentAndProperty()
     {
         $vcalendar = new Component('vcalendar');
         $builder = new ComponentBuilder($this->buildDocumentBuilder(), clone $vcalendar);

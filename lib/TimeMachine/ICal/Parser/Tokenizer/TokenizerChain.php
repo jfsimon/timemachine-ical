@@ -17,9 +17,12 @@ class TokenizerChain implements TokenizerInterface
     /**
      * Constructor.
      */
-    public function __construct()
+    public function __construct(array $tokenizers = array())
     {
         $this->tokenizers = array();
+        foreach ($tokenizers as $tokenizer) {
+            $this->addTokenizer($tokenizer);
+        }
     }
 
     /**
@@ -38,11 +41,11 @@ class TokenizerChain implements TokenizerInterface
         foreach ($this->tokenizers as $tokenizer) {
             try {
                 return $tokenizer->buildTokens($content);
-            } catch (\InvalidArgumentException $e) {
+            } catch (TokenizerException $exception) {
                 continue;
             }
         }
 
-        throw TokenizerException::unsupportedContent($content);
+        throw TokenizerException::unsupportedContent($this, $content);
     }
 }

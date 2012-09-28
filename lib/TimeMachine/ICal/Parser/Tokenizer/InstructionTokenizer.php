@@ -39,6 +39,6 @@ class InstructionTokenizer implements TokenizerInterface
             return array(new Token($this->tokenType, $matches[1]));
         }
 
-        throw TokenizerException::unsupportedContent($content);
+        throw TokenizerException::unsupportedContent($this, $content);
     }
 }

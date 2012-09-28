@@ -10,7 +10,7 @@ use TimeMachine\ICal\Parser\Token;
  */
 class PrefixedTokenizerTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSuccess()
+    public function testGoodOne()
     {
         $tokenizer = new InstructionTokenizer('begin', Token::BEGIN);
         $content = 'begin:vcalendar';
@@ -18,7 +18,7 @@ class PrefixedTokenizerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($tokens, $tokenizer->buildTokens($content));
     }
 
-    public function testError()
+    public function testWrongOne()
     {
         $tokenizer = new InstructionTokenizer('begin', Token::BEGIN);
         $content = 'dstart:vcalendar';

@@ -16,11 +16,12 @@ class Parameter extends NamedObject
 
     /**
      * @param string $name
+     * @param string $value
      */
-    public function __construct($name)
+    public function __construct($name, $value = '')
     {
         parent::__construct($name);
-        $this->value = '';
+        $this->value = $value;
     }
 
     /**

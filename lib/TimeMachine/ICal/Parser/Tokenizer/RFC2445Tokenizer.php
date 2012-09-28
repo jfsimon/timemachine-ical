@@ -19,15 +19,12 @@ class RFC2445Tokenizer implements TokenizerInterface
      */
     public function __construct()
     {
-        $propertyValueTokenizer = new TokenizerChain();
-        $propertyValueTokenizer->addTokenizer(new ParameterTokenizer('=', new ValueTokenizer()));
-        $propertyValueTokenizer->addTokenizer(new ValueTokenizer());
-
-        $this->innerTokenizer = new TokenizerChain();
-        $this->innerTokenizer->addTokenizer(new InstructionTokenizer('begin', Token::BEGIN));
-        $this->innerTokenizer->addTokenizer(new InstructionTokenizer('end', Token::END));
-        $this->innerTokenizer->addTokenizer(new PropertyTokenizer(':', ';', $propertyValueTokenizer));
-        $this->innerTokenizer->addTokenizer(new ParameterTokenizer('=', new ValueTokenizer()));
+        $this->innerTokenizer = new TokenizerChain(array(
+            new InstructionTokenizer('begin', Token::BEGIN),
+            new InstructionTokenizer('end', Token::END),
+            new PropertyTokenizer(':', ';', new ValueTokenizer(), new ParameterTokenizer('=', new ValueTokenizer())),
+            new ParameterTokenizer('=', new ValueTokenizer()),
+        ));
     }
 
     /**

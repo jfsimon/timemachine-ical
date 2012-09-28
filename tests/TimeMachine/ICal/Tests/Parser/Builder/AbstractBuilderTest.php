@@ -11,8 +11,9 @@ abstract class AbstractBuilderTest extends \PHPUnit_Framework_TestCase
 {
     protected function build(BuilderInterface $builder, array $tokens)
     {
+        $cursor = $builder;
         foreach ($tokens as $token) {
-            $builder = $builder->add($token);
+            $cursor = $cursor->add($token);
         }
 
         return $builder->build();
