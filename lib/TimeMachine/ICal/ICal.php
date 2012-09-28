@@ -2,13 +2,13 @@
 
 namespace TimeMachine\ICal;
 
-use TimeMachine\ICal\Domain\Model\Document;
-use TimeMachine\ICal\Infra\Parser\Parser;
-use TimeMachine\ICal\Infra\Parser\Tokenizer\TokenizerInterface;
-use TimeMachine\ICal\Infra\Parser\Tokenizer\RFC2445Tokenizer;
-use TimeMachine\ICal\Infra\Dumper\Dumper;
-use TimeMachine\ICal\Infra\Dumper\Formatter\FormatterInterface;
-use TimeMachine\ICal\Infra\Dumper\Formatter\RFC2445Formatter;
+use TimeMachine\ICal\Model\Document;
+use TimeMachine\ICal\Parser\Parser;
+use TimeMachine\ICal\Parser\Tokenizer\TokenizerInterface;
+use TimeMachine\ICal\Parser\Tokenizer\RFC2445Tokenizer;
+use TimeMachine\ICal\Dumper\Dumper;
+use TimeMachine\ICal\Dumper\Formatter\FormatterInterface;
+use TimeMachine\ICal\Dumper\Formatter\RFC2445Formatter;
 
 /**
  * ICal class.
