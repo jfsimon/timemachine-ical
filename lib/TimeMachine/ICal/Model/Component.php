@@ -64,7 +64,7 @@ class Component extends NamedObject
      */
     public function getChildren()
     {
-        return array_merge($this->components, $this->properties);
+        return array_merge(iterator_to_array($this->components), iterator_to_array($this->properties));
     }
 
     /**

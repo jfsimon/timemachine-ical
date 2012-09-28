@@ -16,7 +16,7 @@ class ComponentHandler implements HandlerInterface
      */
     public function open(ObjectInterface $object, FormatterInterface $formatter)
     {
-        return $formatter->begin($object->getName()).$formatter->return();
+        return $formatter->begin($object->getName()).$formatter->feed();
     }
 
     /**
@@ -24,7 +24,7 @@ class ComponentHandler implements HandlerInterface
      */
     public function close(ObjectInterface $object, FormatterInterface $formatter)
     {
-        return $formatter->end($object->getName()).$formatter->return();
+        return $formatter->end($object->getName()).$formatter->feed();
     }
 
     /**

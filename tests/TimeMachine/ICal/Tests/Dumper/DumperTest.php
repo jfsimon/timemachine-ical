@@ -1,9 +1,9 @@
 <?php
 
-namespace TimeMachine\ICal\Tests\Parser\Builder;
+namespace TimeMachine\ICal\Tests\Parser\Dumper;
 
-use TimeMachine\ICal\Parser\Parser;
-use TimeMachine\ICal\Parser\Tokenizer\RFC2445Tokenizer;
+use TimeMachine\ICal\Dumper\Dumper;
+use TimeMachine\ICal\Dumper\Formatter\RFC2445Formatter;
 use TimeMachine\ICal\Model\Document;
 use TimeMachine\ICal\Model\Component;
 use TimeMachine\ICal\Model\Property;
@@ -12,7 +12,7 @@ use TimeMachine\ICal\Model\Parameter;
 /**
  * @author Jean-François Simon <jeanfrancois.simon@sensiolabs.com>
  */
-class ParserTest extends \PHPUnit_Framework_TestCase
+class DumperTest extends \PHPUnit_Framework_TestCase
 {
     public function testVevent()
     {
@@ -33,7 +33,7 @@ EOF;
         $vevent->add($attach = new Property('ATTACH'));
         $attach->add(new Parameter('FMTTYPE', 'image/jpeg:http://domain.com/images/bastille.jpg'));
 
-        $parser = new Parser(new RFC2445Tokenizer());
-        $this->assertEquals($document, $parser->parse($code));
+        $dumper = new Dumper(new RFC2445Formatter());
+        $this->assertEquals($code, $dumper->dump($document));
     }
 }

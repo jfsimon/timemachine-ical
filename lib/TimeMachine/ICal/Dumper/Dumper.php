@@ -5,6 +5,7 @@ namespace TimeMachine\ICal\Dumper;
 use TimeMachine\ICal\Dumper\Formatter\FormatterInterface;
 use TimeMachine\ICal\Model\ObjectInterface;
 use TimeMachine\ICal\Dumper\Handler;
+use TimeMachine\ICal\Exception\DumperException;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -67,6 +68,6 @@ class Dumper
             }
         }
 
-        throw new \InvalidArgumentException();
+        throw DumperException::unsupportedObject($object);
     }
 }

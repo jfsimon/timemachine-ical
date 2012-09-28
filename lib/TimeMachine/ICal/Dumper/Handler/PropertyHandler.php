@@ -4,7 +4,7 @@ namespace TimeMachine\ICal\Dumper\Handler;
 
 use TimeMachine\ICal\Model\ObjectInterface;
 use TimeMachine\ICal\Dumper\Formatter\FormatterInterface;
-use TimeMachine\ICal\Model\Parameter;
+use TimeMachine\ICal\Model\Property;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -24,7 +24,7 @@ class PropertyHandler implements HandlerInterface
      */
     public function close(ObjectInterface $object, FormatterInterface $formatter)
     {
-        return $formatter->return();
+        return $formatter->feed();
     }
 
     /**
@@ -32,6 +32,6 @@ class PropertyHandler implements HandlerInterface
      */
     public function supports(ObjectInterface $object)
     {
-        return $object instanceof Parameter;
+        return $object instanceof Property;
     }
 }

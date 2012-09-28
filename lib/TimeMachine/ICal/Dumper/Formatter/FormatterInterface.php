@@ -45,4 +45,9 @@ interface FormatterInterface
      * @return string
      */
     function indent($value, $level = 1);
+
+    /**
+     * @return string
+     */
+    function feed();
 }

@@ -46,4 +46,9 @@ class RFC2445Formatter implements FormatterInterface
     {
         return str_repeat(' ', $level).$value;
     }
+
+    public function feed()
+    {
+        return "\n\n";
+    }
 }

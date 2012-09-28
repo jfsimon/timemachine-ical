@@ -4,7 +4,7 @@ namespace TimeMachine\ICal\Dumper\Handler;
 
 use TimeMachine\ICal\Model\ObjectInterface;
 use TimeMachine\ICal\Dumper\Formatter\FormatterInterface;
-use TimeMachine\ICal\Model\Component;
+use TimeMachine\ICal\Model\Document;
 
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
@@ -32,6 +32,6 @@ class DocumentHandler implements HandlerInterface
      */
     public function supports(ObjectInterface $object)
     {
-        return $object instanceof Component;
+        return $object instanceof Document;
     }
 }
